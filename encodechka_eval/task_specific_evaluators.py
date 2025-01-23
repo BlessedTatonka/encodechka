@@ -105,7 +105,7 @@ def evaluate_ner_embedder(embedder, texts_train, labels_train, texts_test, label
     X_train, y_train = get_ner_X_y(texts_train, labels_train, words_embedder=embedder)
     X_test, y_test = get_ner_X_y(texts_test, labels_test, words_embedder=embedder)
 
-    clf = SGDClassifier(loss='log', shuffle=True, verbose=0, random_state=1, early_stopping=False, tol=1e-4)
+    clf = SGDClassifier(loss='log_loss', shuffle=True, verbose=0, random_state=1, early_stopping=False, tol=1e-4)
     clf.fit(X_train, y_train)
     preds = clf.predict(X_test)
     results = {
